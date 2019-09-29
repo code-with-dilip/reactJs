@@ -26,6 +26,8 @@ console.log(myName);
 
 ## Arrow Functions
 
+- This are the modern way of creating a function and assigning it to a variable.
+
 #### Syntax
 
 ```
@@ -69,4 +71,109 @@ const multiplySimplified = (num1,num2) =>  num1 * num2;
 
 console.log(multiply(2,3));
 console.log(multiplySimplified(2,3));
+```
+
+## Exports and Imports
+
+- In general, JavaScript code is split in to multiple files as modules. The general idea behind modules is that you can import the content in one js file from other file.
+
+- Now we have two java script files **person.js** and **utility.js**.
+
+**person.js**
+```
+const person = {
+  name= 'Dilip'
+}
+export default person
+```
+**utility.js**
+```
+export const employee = {
+  name= 'Dilip'
+}
+export const user = {
+  name= 'Dilip'
+}
+```
+
+- If **app.js** file would like to import the functions defined in the above files. Below are the ways to do it
+
+**app.js**
+```
+// default functions can be imported using any different names.
+import person from './person.js'
+import prs from './person.js'
+
+//Name should match and it should be between curly braces as they are not within the curly braces.
+import {employee} from './utility.js'
+import {user} from './utility.js'
+
+//import using alias
+import {user as usr} from './utility.js'
+
+//import as bundled- This imports all the exports as js properties. You can access this like bundled.user and bundled.employee
+import * as bundled from './utility.js'
+```
+
+## Classes
+- Classes are used to introduce the object oriented principles in JavaScript.
+
+**ES6 approach**
+```
+class User{
+
+  constructor() {
+    this.name = 'Dilip';
+  }
+
+  printMyName() {
+    console.log(this.name);
+  }
+}
+
+class SuperUser extends User{ //Inheritance is allowed
+
+  constructor(){
+    super();
+    this.role='Engineer';
+    this.name='Scooby'; // overriding properties are allowed
+  }
+   printRole() {
+    console.log(this.role);
+  }
+}
+
+const user = new User();
+user.printMyName();
+
+const superUser = new SuperUser();
+superUser.printMyName();
+superUser.printRole();
+```
+
+**ES7**
+- Below is the code that we write using the ES7. You don't need **constructor** and **this** keyword.
+```
+class User{
+  name = 'Dilip';
+  printMyName = () => {
+    console.log(this.name);
+  }
+
+}
+
+class SuperUser extends User{
+  role='Engineer';
+  name='Scooby'; // overriding properties are allowed
+   printRole = () => {
+    console.log(this.role);
+  }
+}
+
+const user = new User();
+user.printMyName();
+
+const superUser = new SuperUser();
+superUser.printMyName();
+superUser.printRole();
 ```
