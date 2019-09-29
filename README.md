@@ -30,3 +30,7 @@
 **ReactDOM** - This takes for rendering the react components and display it in the browser.
 
 ## Java Script Basics
+
+- Click on the link below for JavaScript basics.
+
+[Java Script Basics](https://github.com/code-with-dilip/reactJs/blob/master/JavaScript.md)
