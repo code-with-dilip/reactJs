@@ -177,3 +177,56 @@ const superUser = new SuperUser();
 superUser.printMyName();
 superUser.printRole();
 ```
+
+## Spread and Rest Operator
+
+**Syntax**
+
+```
+...
+```
+**Spread**  
+
+- The spread operator is used to split up array elements or object properties
+
+```
+const newArray=[...oldArray, 1,3] // This adds 1 and 3 to the oldArray and returns a new array.
+const newObject= [...oldObject, newProp:5] // This adds the newProd to the oldObject.If an prop "newProp" is available then it will be overriden.
+```
+
+**Example**
+
+```
+//array manipulation
+const numbers =[1,2,3]
+const newNumbers =[...numbers,4,5,6]
+console.log(newNumbers)
+
+//object manipulation
+const user={
+  name: 'Dilip'
+};
+const userExtended = {
+  ...user,
+  age: 32
+};
+console.log(userExtended);
+```
+
+**Rest**  
+
+- The Rest operator is used in the scope of function arguments. This is used to merge the list of function arguments in to the array.
+
+```
+function hello(...args){
+
+returns args.sort()
+}
+```
+
+**Example**
+
+```
+const sortFunction = (...args) => args.sort();
+console.log(sortFunction(4,3,6,7,2,1));
+```
