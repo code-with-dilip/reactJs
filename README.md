@@ -24,6 +24,13 @@
 - UI state becomes too difficult handle. Reacts helps taking care of the state of the application.
 - React is backed by a Huge community and its pretty easy to find a solution to a problem.
 
+### Single Page vs Multi Page Apps
+
+| SPA  | MPA |
+| ------------- | ------------- |
+| Only one HTML Page, Content is rendered on client. After that everything is managed with **React**. | Multiple HTML Page and the content is rendered from Server. |
+
+
 ### React and React DOM
 
 **React** - This takes for building the react components.  
