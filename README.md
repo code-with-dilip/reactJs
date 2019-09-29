@@ -20,7 +20,13 @@
 -  So the idea is the JS code takes care of fetching the data and build the DOM in the browser. So, No server calls in here to reload the HTML.
 - Basically no request is sent to the backend to load the retrieve the HTML.
 
+### Why React?
+- UI state becomes too difficult handle. Reacts helps taking care of the state of the application.
+- React is backed by a Huge community and its pretty easy to find a solution to a problem.
+
 ### React and React DOM
 
-**React** - This takes for building the react components
+**React** - This takes for building the react components.  
 **ReactDOM** - This takes for rendering the react components and display it in the browser.
+
+## Java Script Basics
