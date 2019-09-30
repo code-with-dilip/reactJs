@@ -33,15 +33,22 @@
 | Page is displayed as multiple Components and its managed by a framework like **React** | It can be displayed as components. But it's a combination of individual HTML pages , css and etc. We can have react components to be part of it as widgets |
 | ReactDOM.render() call to rerender the page. Typical there is only one parent React Component is available.  | If React is included in MPA, then multiple ReactDOM.render() call for each component|
 
+## Java Script Basics
+
+- Click on the link below for JavaScript basics.
+
+[Java Script Basics](https://github.com/code-with-dilip/reactJs/blob/master/JavaScript.md)
+
+## React
+
+### Build WorkFlow
+**Dependency Management** - Use npm or yarn for dependency management.  
+**WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.  
+**Babel** - This is a compiler to compile the java script code. Basically this is needed to translate the code from modern js code to a code that can work in old and modern browsers.
+**Development Server** - We need a server to run our Java Script code, so that the app can be accessed as like a real app that we connect to in production.    
 
 
 ### React and React DOM
 
 **React** - This takes for building the react components.  
 **ReactDOM** - This takes for rendering the react components and display it in the browser.
-
-## Java Script Basics
-
-- Click on the link below for JavaScript basics.
-
-[Java Script Basics](https://github.com/code-with-dilip/reactJs/blob/master/JavaScript.md)
