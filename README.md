@@ -41,6 +41,20 @@
 
 ## React
 
+### Set Up
+
+- Update to latest version of node.
+
+```
+brew update && brew upgrade node && npm update -g npm
+```
+
+- Run the below command to set up the create-react-appp globally
+
+```
+sudo npm install create-react-app -g
+```
+
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.  
 **WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.  
