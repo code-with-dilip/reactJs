@@ -230,3 +230,53 @@ returns args.sort()
 const sortFunction = (...args) => args.sort();
 console.log(sortFunction(4,3,6,7,2,1));
 ```
+
+## Destructuring
+
+- In this section we will learn about the techniques to read the elements from the array and object using simple syntax.
+
+**Example**
+
+```
+const characters = ['a','b','c'];
+[char1, char2] = characters // This syntax takes care of reading the 1st and 2nd element in the array.
+console.log(char1,char2);
+
+[char1, ,char3] = characters // [char1, ,char3] = characters // This syntax takes care of reading the 1st and 3rd element in the array.
+console.log(char1,char3);
+```
+
+## Reference and Primitive Types
+
+### Primitive Types
+
+- In, String and boolean are primitive types.
+
+```
+const num = 1; //
+
+const num1 = num; // This copies the value of the num to num1. No reference created.
+```
+
+### Reference Type
+
+**Example**
+
+- There are two approaches to that
+  - Copying the references.
+  ```
+  const person1 = person;
+  ```
+  - Copying the object using the Spread operator.
+  ```
+  const person2 = {...person};
+  ```
+
+```
+const person = {name: "Dilip"};
+const person1 = person; // person1 still referencing to the person.
+const person2 = {...person}; //Copying the object using the Spread operator.This is a deep copy
+person.name= "Scooby";
+console.log(person1);
+console.log(person2);
+```
