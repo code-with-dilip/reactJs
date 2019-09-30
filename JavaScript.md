@@ -280,3 +280,15 @@ person.name= "Scooby";
 console.log(person1);
 console.log(person2);
 ```
+
+## Array Functions
+
+- map -> This function is used to map a value to a new value.
+```
+const numbers = [1,2,3]
+
+const doubleArray = numbers.map((num)=>{
+    return num*2
+});
+console.log(doubleArray);
+```
