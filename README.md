@@ -39,21 +39,6 @@
 
 [Java Script Basics](https://github.com/code-with-dilip/reactJs/blob/master/JavaScript.md)
 
-## React
-
-### Set Up
-
-- Update to latest version of node.
-
-```
-brew update && brew upgrade node && npm update -g npm
-```
-
-- Run the below command to set up the create-react-appp globally
-
-```
-sudo npm install create-react-app -g
-```
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.  
@@ -66,3 +51,29 @@ sudo npm install create-react-app -g
 
 **React** - This takes for building the react components.  
 **ReactDOM** - This takes for rendering the react components and display it in the browser.
+## React
+
+### Set Up
+
+- Update to latest version of node.
+
+```
+brew install node
+```
+
+- Run the below command to set up the **create-react-app** globally
+
+```
+sudo npm install create-react-app -g
+```
+
+- Lets create the first react app by running the below command. This creates a base project named **first-react-app** with the necessary directories and start up scripts that are needed to build the react app.
+
+```
+create-react-app first-react-app
+```
+
+### Exploring the Package Structure of a react-app
+
+- **package.json** - This has all the dependencies that are required for the react project.
+- **node-modules** - This is the directory which was created automatically and it holds all the dependencies that are needed by the project.
