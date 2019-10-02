@@ -41,16 +41,17 @@
 
 
 ### Build WorkFlow
-**Dependency Management** - Use npm or yarn for dependency management.  
-**WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.  
+**Dependency Management** - Use npm or yarn for dependency management.
+**WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.
 **Babel** - This is a compiler to compile the java script code. Basically this is needed to translate the code from modern js code to a code that can work in old and modern browsers.
-**Development Server** - We need a server to run our Java Script code, so that the app can be accessed as like a real app that we connect to in production.    
+**Development Server** - We need a server to run our Java Script code, so that the app can be accessed as like a real app that we connect to in production.
 
 
 ### React and React DOM
 
-**React** - This takes for building the react components.  
+**React** - This takes for building the react components.
 **ReactDOM** - This takes for rendering the react components and display it in the browser.
+
 ## React
 
 ### Set Up
@@ -77,6 +78,7 @@ create-react-app first-react-app
 
 - **package.json** - This has all the dependencies that are required for the react project.
 - **node-modules** - This is the directory which was created automatically and it holds all the dependencies that are needed by the project.
+- **public** - This folder which get served by the webserver.
 - **index.html** - This is the only html file thats present in the whole react app with the div id **root**. The whole react app is mounted in to this div tag.
 - **App.js** - This is the file which holds the react code.
 - **index.js** - This is the file which renders the react component and mounts it in to the div tag **root**.
@@ -91,15 +93,18 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 **Approach 1**
 - **render()** method is mandatory, because will call this method to render something to the screen.
-
+- The content thats inside the render() method is a **jsx** code.
 ```
+import React, {Component} from 'react';
+import './App.css';
+
 class App extends Component{
   render(){
     return (
       <div className="App">
         <h1>Hi, I am a REACT App.</h1>
       </div>
-    );  
+    );
   }
 }
 
@@ -108,7 +113,7 @@ export default App;
 **Approach 2**
 
 ```
-function App() {  
+function App() {
   return (
     <div className="App">
       <h1>Hi, I am a REACT App.</h1>
@@ -118,3 +123,60 @@ function App() {
 
 export default App;
 ```
+
+### Understanding JSX
+
+- JSX is a syntax extension to Java Script. JSX code will only be written inside a **js** code.
+- JSX produces react elements.
+- JSX helps to couple the mark up and logic together.
+- Whatever that's written inside the react Component is a JSX code
+- Both the approaches are the same. It's just that **approach1** is more readable than **approach2**.
+
+**Approach 1**
+
+```
+class App extends Component{
+  render(){
+    return (
+       <div className="App">
+         <h1>Hi, I am a REACT App.</h1>
+       </div>
+     );
+  }
+}
+
+```
+**Approach 2**
+
+```
+class App extends Component{
+
+  render(){
+    return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
+  }
+}
+
+```
+
+### JSX Restriction
+
+**Restriction 1**
+- In the **div** below we have provided the **className**.
+- In the regular HTML code we would have used **class**, but the class here is reserved for HTML and thats why we had to use **className**.
+
+```
+<div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+</div>
+```
+**Restriction 2**
+- You are only allowed to have one parent element inside the **render()** method.
+- In this example you can just have **div** as a parent element.
+
+```
+return (
+      <div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+      </div>
+    );
+```        
