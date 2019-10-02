@@ -169,7 +169,7 @@ class App extends Component{
         <h1>Hi, I am a REACT App.</h1>
 </div>
 ```
-**Restriction 2**
+**Restriction 2**  
 - You are only allowed to have one parent element inside the **render()** method.
 - In this example you can just have **div** as a parent element.
 
@@ -180,3 +180,44 @@ return (
       </div>
     );
 ```        
+
+### Creating a Functional Component and Resuing them
+
+- Below is a simple **react** component which just returns a paragraph.
+- The **import** and **export default** are really important.
+  - **import** allows you to import the React features to this file.
+  - **export** will allow the other components to start using this.
+
+#### Person Functional Component
+
+```
+import React from 'react';
+
+const person = () => {
+
+    return (
+        <p> I am a Person</p>
+    );
+}
+
+export default person;
+```
+#### Using the Person Functional Component in App.js
+
+- The <Person/> component in the below code allows you to use the component inside another component.
+
+```
+import Person from './Person/Person'
+
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+        <Person/>
+      </div>
+    );  
+   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
+  }
+}
+```
