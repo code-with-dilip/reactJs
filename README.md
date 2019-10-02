@@ -77,3 +77,44 @@ create-react-app first-react-app
 
 - **package.json** - This has all the dependencies that are required for the react project.
 - **node-modules** - This is the directory which was created automatically and it holds all the dependencies that are needed by the project.
+- **index.html** - This is the only html file thats present in the whole react app with the div id **root**. The whole react app is mounted in to this div tag.
+- **App.js** - This is the file which holds the react code.
+- **index.js** - This is the file which renders the react component and mounts it in to the div tag **root**.
+
+- This the key command that takes care of applying the **App** react component to the div tag with the name **root** which is present in the index.html.
+
+```
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+#### Sample React Component
+
+**Approach 1**
+- **render()** method is mandatory, because will call this method to render something to the screen.
+
+```
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+      </div>
+    );  
+  }
+}
+
+export default App;
+```
+**Approach 2**
+
+```
+function App() {  
+  return (
+    <div className="App">
+      <h1>Hi, I am a REACT App.</h1>
+    </div>
+  );
+}
+
+export default App;
+```
