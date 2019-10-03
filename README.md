@@ -94,6 +94,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 **Approach 1**
 - **render()** method is mandatory, because will call this method to render something to the screen.
 - The content thats inside the render() method is a **jsx** code.
+- Creating components using the class gives you the option to define a state.
+
 ```
 import React, {Component} from 'react';
 import './App.css';
@@ -111,6 +113,7 @@ class App extends Component{
 export default App;
 ```
 **Approach 2**
+- This is a function based component. Use this when you feel like there is not going to be a any state in the component.
 
 ```
 function App() {
@@ -220,4 +223,81 @@ class App extends Component{
    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
   }
 }
+```
+
+### Dynamic content in react
+
+- Using the **{}** we can generate the dynamic content in to the jsx file.
+
+### Introducing props for injecting Dynamic Content
+- **props** - This is the property through which the dynamic content is injected.
+
+```
+<Person name='Dilip' age='32'/> // names and age are the property which are injected in to the component.
+```
+- Using props we can read those properties
+
+- **Approach1**
+```
+import React from 'react';
+
+const person = (props) => {
+    return (
+        <p> My Name is {props.name} and my age is {props.age} years old!</p>
+    );
+}
+
+export default person;
+```  
+- **Approach2**
+
+```
+import React, {Component} from 'react';
+
+class PersonClass extends Component {
+    render(){
+        return (
+            <p> My Name is {this.props.name} and my age is {this.props.age} years old!</p>
+        );
+    }
+}
+
+export default PersonClass
+```
+
+### Accessing the Children property
+
+- Anything thats between the React Component's opening and closing tag is a children.
+- In here, **My Hobbies are going to gym** is a children.
+
+```
+<Person name='Dilip' age='32'>My hobby is going to gym.</Person>
+
+```
+- We can access the content inside the React component using the **children** props.
+
+```
+<p>{props.children}</p>
+```
+
+### Introducing state in React Components
+
+- **state** can only be used in the class based React components.
+- The beauty of using state is that it renders the component again when there is a change in **state**.
+- Defining a **state** in the react component.
+
+```
+state = {
+      persons: [
+        {name: 'Dilip', age: 32},
+        {name: 'Scooby', age: 2},
+        {name: 'Aish', age: 28}
+      ]
+  }
+```
+
+- Accessing the state by using the this **keyword**.
+
+```
+<Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My hobby is going to gym.</Person>
 ```
