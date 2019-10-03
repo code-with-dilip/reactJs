@@ -326,6 +326,7 @@ switchNameHandler= () =>{
 ```
 
 - The only two ways to render the page by changing the **state** and **props**.
+- The code before **reacthook**
 ```
 import React, {Component} from 'react';
 import './App.css';
