@@ -301,3 +301,147 @@ state = {
 ```
 <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My hobby is going to gym.</Person>
 ```
+
+### Manipulating state in React Components
+
+- You can only manipulate the state using the **setState()** function call. This renders the page again.
+- Normally we will define a handler like below through which the state can be managed by using **this.setState()** method
+
+```
+switchNameHandler= () =>{
+   // console.log('clicked')
+   //Dont DO this this.state.persons[0].name = 'Dilip Sundarraj'
+    this.setState({persons: [
+      {name: 'DilipSundarraj', age: 32},
+      {name: 'Scooby', age: 2},
+      {name: 'Aish', age: 28}
+    ]})
+  }
+```
+
+- How to invoke the **switchNameHandler**?
+- We normally provide the reference of the handler like below using the this keyword.
+```
+<button onClick={this.switchNameHandler}>Switch Name</button>
+```
+
+- The only two ways to render the page by changing the **state** and **props**.
+```
+import React, {Component} from 'react';
+import './App.css';
+import Person from './Person/Person'
+import PersonClass from './Person/PersonClass'
+
+class App extends Component{
+  state = {
+      persons: [
+        {name: 'Dilip', age: 32},
+        {name: 'Scooby', age: 2},
+        {name: 'Aish', age: 28}
+      ]
+  }
+
+  switchNameHandler= () =>{
+   // console.log('clicked')
+   //Dont DO this this.state.persons[0].name = 'Dilip Sundarraj'
+   this.setState({persons: [
+    {name: 'DilipSundarraj', age: 32},
+    {name: 'Scooby', age: 2},
+    {name: 'Aish', age: 28}
+  ]})
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>My hobby is going to gym.</Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+        <PersonClass name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+      </div>
+    );  
+   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
+  }
+}
+
+// function App() {  
+//   // return (
+//   //   <div className="App">
+//   //     <h1>Hi, I am a REACT App.</h1>
+//   //   </div>
+//   // );
+//   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
+// }
+
+export default App;
+
+```
+
+### useState() Hook for State Management
+- The class based component is replaced with the function based component. We are using **useState  reactHook** for state management in a react component.
+
+```
+import React, {useState} from 'react';
+import './App.css';
+import Person from './Person/Person'
+import PersonClass from './Person/PersonClass'
+
+const App = (props) => {
+  const [personState, setPersonState]  = useState({
+    persons: [
+      {name: 'Dilip', age: 32},
+      {name: 'Scooby', age: 2},
+      {name: 'Aish', age: 28}
+    ]
+  }); // this returns an array of two elements.first element is the currentState and setPeronState can be used for setting the new state.1
+
+  const switchNameHandler= () =>{
+    // console.log('clicked')
+    //Dont DO this personState.persons[0].name = 'Dilip Sundarraj'
+    setPersonState({persons: [
+      {name: 'DilipSundarraj', age: 32},
+      {name: 'Scooby', age: 2},
+      {name: 'Aish', age: 28}
+    ]})
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am a REACT App.</h1>
+        <button onClick={switchNameHandler}>Switch Name</button>
+
+        <Person name={personState.persons[0].name} age={personState.persons[0].age}>My hobby is going to gym.</Person>
+        <Person name={personState.persons[1].name} age={personState.persons[1].age}/>
+        <PersonClass name={personState.persons[2].name} age={personState.persons[2].age}/>
+      </div>
+    );  
+   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
+}
+
+export default App;
+```
+- Exploring **useState** reactHook.
+- **useState** returns an array of two elements.
+  - first element is the currentState which is the **personState** in the below example.
+  - **setPeronState** can be used for setting the new state
+
+```
+const App = (props) => {
+  const [personState, setPersonState]  = useState({
+    persons: [
+      {name: 'Dilip', age: 32},
+      {name: 'Scooby', age: 2},
+      {name: 'Aish', age: 28}
+    ]
+  }); // this returns an array of two elements.first element is the currentState and setPeronState can be used for setting the new state.1
+
+const switchNameHandler= () =>{
+    setPersonState({persons: [
+      {name: 'DilipSundarraj', age: 32},
+      {name: 'Scooby', age: 2},
+      {name: 'Aish', age: 28}
+    ]})
+  } // This replaced the whole state. If your state of this component has more than person then it replaces it.
+```
