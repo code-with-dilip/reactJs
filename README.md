@@ -446,3 +446,64 @@ const switchNameHandler= () =>{
     ]})
   } // This replaced the whole state. If your state of this component has more than person then it replaces it.
 ```
+
+### Stateless v StateFul Components
+
+#### StateFul Component:
+
+- Any component that has manages a state then these are called stateful component.
+  - Using the **state** object in the class or
+  - Using the **useState** in the react hooks.
+- These are also called smart component or container component.
+
+#### Stateless Component
+- Any component that does not maintain a state is called stateless component.
+- It is recommended to create as many as stateless component.
+
+### Passing Method References Between Components
+
+- In the below example **click** prop is passed with the reference of the function. The name of the prop **click** can be anything.
+
+```
+<Person name={this.state.persons[0].name}
+        age={this.state.persons[0].age}
+        click={this.switchNameHandler}>My hobby is going to gym.</Person>
+```
+
+- The same **click** prop can be accessed in the child component using the **props** as like you access any other props.
+
+```
+<p onClick={props.click}> My Name is {props.name} and my age is {props.age} years old!</p>
+```
+
+#### bind
+
+- **bind** is needed in order to bind a function to a class. If you use arrow functions then the function are automatically bound to the component.
+
+- We dont need to bind this as its automatically bound to the class by **React**.
+
+```
+switchNameHandler=() =>{
+ // console.log('clicked')
+ //Dont DO this this.state.persons[0].name = 'Dilip Sundarraj'
+ this.setState({persons: [
+  {name: newName, age: 32},
+  {name: 'Scooby', age: 2},
+  {name: 'Aish', age: 28}
+]})
+}
+
+```
+- If you have to pass a value to the function using **this** then its mandatory to bind the function using the below syntax.
+
+**Syntax 1**  
+
+```
+<button onClick={this.switchNameHandler.bind(this, 'Dilip Sundarraj')}>Switch Name</button>
+```
+**Syntax 2**  
+```
+<Person name={this.state.persons[0].name}
+        age={this.state.persons[0].age}
+        click={()=>this.switchNameHandler('Dilip!')}>My hobby is going to gym.</Person>
+```
