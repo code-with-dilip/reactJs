@@ -502,8 +502,40 @@ switchNameHandler=() =>{
 <button onClick={this.switchNameHandler.bind(this, 'Dilip Sundarraj')}>Switch Name</button>
 ```
 **Syntax 2**  
+- This is not a recommended syntax to use.
+
+- This syntax may re-render the content too often and this syntax is not efficient.
+
 ```
 <Person name={this.state.persons[0].name}
         age={this.state.persons[0].age}
         click={()=>this.switchNameHandler('Dilip!')}>My hobby is going to gym.</Person>
+```
+
+### Two Way Binding
+
+- Lets explore the two way binding using an example.
+- The below reads the event and updates the value of the field
+
+```
+nameChangedHandler = (event) => {
+   this.setState({persons: [
+     {name: 'Dilip', age: 32},
+     {name: event.target.value, age: 2},
+     {name: 'Aish', age: 28}
+   ]})
+ }
+
+//This takes care of passing the reference of this function to the other component.
+
+ <Person name={this.state.persons[1].name} age={this.state.persons[1].age}
+         changed={this.nameChangedHandler}/>
+
+```
+- Here in this file we have the two way binding set up using the input element.
+- **onChange** event takes care of invoking the above function and target value is set using the **event.target.value**.
+- The **value** attribute takes care of setting the default value when the component was loaded in the text box.
+
+```
+<input type="text" onChange={props.changed} value={props.name}></input>
 ```
