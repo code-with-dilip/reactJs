@@ -539,3 +539,34 @@ nameChangedHandler = (event) => {
 ```
 <input type="text" onChange={props.changed} value={props.name}></input>
 ```
+
+### Adding Styles to the React Component
+
+- Create a new file with the name **Person.css**.
+
+```
+.Person {
+    width: 30%;
+    margin: auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center
+}
+```
+
+- Import the **css** file in to the React component.
+
+```
+import './Person.css'
+
+const person = (props) => {
+    return (
+        <div className="Person">
+            <p onClick={props.click}> My Name is {props.name} and my age is {props.age} years old!</p>
+            <p>{props.children}</p>
+            <input type="text" onChange={props.changed} value={props.name}></input>
+        </div>
+    );
+}
+```
