@@ -555,7 +555,7 @@ nameChangedHandler = (event) => {
 }
 ```
 
-- Import the **css** file in to the React component.
+- Import the **css** file in to the React component by adding the **className** attribute to the **div**.
 
 ```
 import './Person.css'
@@ -569,4 +569,21 @@ const person = (props) => {
         </div>
     );
 }
+```
+
+#### Inline styling
+
+- There is a **style** attribute that can used against a react Component.
+```
+const style = {
+     backgroundColor: 'white',
+     font: 'inherit',
+     border : '1px solid blue',
+     padding: '8px',
+     cursor: 'pointer'
+ };
+
+ <button
+       style = {style}
+       onClick={this.switchNameHandler.bind(this, 'Dilip Sundarraj')}>Switch Name</button>
 ```
