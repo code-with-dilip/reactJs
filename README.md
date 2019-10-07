@@ -587,3 +587,33 @@ const style = {
        style = {style}
        onClick={this.switchNameHandler.bind(this, 'Dilip Sundarraj')}>Switch Name</button>
 ```
+
+## Working With Lists and Conditional Rendering (Chapter 4)
+- Conditionally render the elements in the page using a flag.
+- We can use the map function to iterate the list and populate the JSX elements dynamically.
+
+```
+persons = (
+      <div>
+        {
+          this.state.persons.map((person, index) => {
+            return <Person
+              key={index}
+              name={person.name}
+              age={person.age}
+              click={() => this.deletePersonHandler(person.id)}
+            />
+          })
+        }
+```
+
+- Removing an element from the array using the **splice()** method in Java Script
+
+```
+deletePersonHandler = (index) => {
+    //const personsConst = this.state.persons.slice();//cloning the object - - approach1
+    const personsConst = [...this.state.persons]; //cloning the object - approach2
+    personsConst.splice(index, 1);
+    this.setState({ persons: personsConst });
+  }
+```
