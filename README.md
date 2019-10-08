@@ -65,13 +65,19 @@ brew install node
 - Run the below command to set up the **create-react-app** globally
 
 ```
-sudo npm install create-react-app -g
+sudo tall create-react-app -g
 ```
 
 - Lets create the first react app by running the below command. This creates a base project named **first-react-app** with the necessary directories and start up scripts that are needed to build the react app.
 
 ```
 create-react-app first-react-app
+```
+
+-  Adding a new package to the project. The below command adds the radium dependency in to the project and then it adds it to the **package.json** file.
+
+```
+npm install --save radium
 ```
 
 ### Exploring the Package Structure of a react-app
@@ -638,4 +644,58 @@ if (this.state.showPersons) {
        </div>
      );
    }
+```
+
+## Styling React Components(Chapter-5)
+
+### Inline Styling
+
+- This is called inline styling where the CSS code is done using JSX and dynamically added to the element.
+
+```
+const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+```
+
+- The above code has come limitations like it cannot apply the pseudo selectors to an element like **hover** and **media queries**.
+
+- This style is injected to the bind variable like below.
+
+```
+<button
+  style={style}
+  onClick={this.togglePersonHandler}>Toggle Persons</button>
+{persons}
+</div>
+```
+
+### Radium
+
+- Radium is one the popular inline style library for **React**.
+- The package can be installed by running the below code.
+
+```
+npm install --save radium
+```
+- We were able to apply the **hover** in to the file using inline style.
+
+```
+':hover': {
+        backgroundColor : 'lightgreen',
+        color: 'black'
+      }
+```
+- We can override the same by using the below syntax.
+
+```
+style[':hover'] =  {
+       backgroundColor : 'salmon',
+       color: 'black'
+     }
 ```
