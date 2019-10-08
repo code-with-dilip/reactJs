@@ -608,6 +608,7 @@ persons = (
 ```
 
 - Removing an element from the array using the **splice()** method in Java Script
+- Never edit the **state** properties directly.
 
 ```
 deletePersonHandler = (index) => {
@@ -616,4 +617,25 @@ deletePersonHandler = (index) => {
     personsConst.splice(index, 1);
     this.setState({ persons: personsConst });
   }
+```
+- Flexible Lists. Dynamically adding the onChange event to the React Components.
+
+```
+if (this.state.showPersons) {
+     persons = (
+       <div>
+         {
+           this.state.persons.map((person, index) => {
+             return <Person
+               key={person.id}
+               name={person.name}
+               age={person.age}
+               click={() => this.deletePersonHandler(person.id)}
+               changed={(event) => this.nameChangedHandler(event, person.id)} // passing the event and person id
+             />
+           })
+         }
+       </div>
+     );
+   }
 ```

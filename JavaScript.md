@@ -292,3 +292,17 @@ const doubleArray = numbers.map((num)=>{
 });
 console.log(doubleArray);
 ```
+
+## Creating an Object Copy
+
+- The spread operator syntax is the modern way of creating the copy of an object.
+
+```
+const persons = [...this.state.persons]
+```
+
+- The syntax below takes care of creating a copy of the object.
+
+```
+const person = Object.assign({}, this.state.persons[personIndex])
+```
