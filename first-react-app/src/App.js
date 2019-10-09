@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
 import PersonClass from './Person/PersonClass'
-import Radium, {StyleRoot} from 'radium'
+//import Radium, {StyleRoot} from 'radium'
 
 class App extends Component {
   state = {
@@ -107,7 +107,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+     // <StyleRoot>
       <div className="App">
         <h1>Hi, I am a REACT App.</h1>
         <p className={classes.join(' ')}> This is really working</p>
@@ -116,7 +116,7 @@ class App extends Component {
           onClick={this.togglePersonHandler}>Toggle Persons</button>
         {persons}
       </div>
-      </StyleRoot>
+      //</StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
   }
@@ -131,4 +131,5 @@ class App extends Component {
 //   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
 // }
 
-export default Radium(App); // higher order component.
+//export default Radium(App); // higher order component.
+export default App;

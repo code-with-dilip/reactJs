@@ -733,3 +733,10 @@ import Radium, {StyleRoot} from 'radium'
      </div>
 </StyleRoot>
 ```
+
+#### Using CSS for styling
+- The below command takes care of pulling the scripts folder from node_modules and put it in to the classpath.
+
+```
+npm run eject
+```
