@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
 import PersonClass from './Person/PersonClass'
-import Radium from 'radium'
+import Radium, {StyleRoot} from 'radium'
 
 class App extends Component {
   state = {
@@ -52,7 +52,7 @@ class App extends Component {
   deletePersonHandler = (index) => {
     //const personsConst = this.state.persons.slice();
     const personsConst = [...this.state.persons];
-    personsConst.splice(index, 1);
+    personsConst.splice(index, 1); // splice is used to change the contents of the array.
     this.setState({ persons: personsConst });
   }
 
@@ -107,6 +107,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I am a REACT App.</h1>
         <p className={classes.join(' ')}> This is really working</p>
@@ -115,6 +116,7 @@ class App extends Component {
           onClick={this.togglePersonHandler}>Toggle Persons</button>
         {persons}
       </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am a REACT App' ));
   }

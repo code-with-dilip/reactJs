@@ -683,7 +683,9 @@ const style = {
 ```
 npm install --save radium
 ```
-- We were able to apply the **hover** in to the file using inline style.
+- We were able to apply the **hover** which is a pseudo selector in to the file using inline style.
+
+#### Pseudo Selector
 
 ```
 ':hover': {
@@ -698,4 +700,36 @@ style[':hover'] =  {
        backgroundColor : 'salmon',
        color: 'black'
      }
+```
+
+#### Media Queries
+- Using Radium for Media Queries
+  -  Media queries are basically used to applu different styles for different types of devices.(Desktop, Mobile, Tab)
+
+```
+const style = {
+      '@media(min-width:500px)':{
+          width: '450px'
+      }
+  }
+```
+- The style below overrides the className
+```
+<div className="Person" style={style}>
+```
+
+- We need to wrap the whole parent component with **StyleRoot** like below code.
+
+```
+import Radium, {StyleRoot} from 'radium'
+<StyleRoot>
+     <div className="App">
+       <h1>Hi, I am a REACT App.</h1>
+       <p className={classes.join(' ')}> This is really working</p>
+       <button
+         style={style}
+         onClick={this.togglePersonHandler}>Toggle Persons</button>
+       {persons}
+     </div>
+</StyleRoot>
 ```
