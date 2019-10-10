@@ -63,6 +63,14 @@ brew install node
 yarn global add live-server
 ```
 
+- Launching the server using the below code. The **index.html** file that under the **public** folder gets served in the browser.
+
+- The below command launches the server in the port **8080**.
+
+```
+live-server public
+```
+
 ### Babel
 
 - This is a JavaScript compiler.
