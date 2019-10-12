@@ -133,6 +133,23 @@ ReactDOM.render(template, document.getElementById('app'));
 babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
 ```
 
+### Exploring JSX
+
+- You are not allowed to have multiple components adjacent to each other in JSX. So it needs to be enclosed inside **div** tag.
+
+```
+var template = (
+    <div>
+        <h1>Indecision App</h1>
+        <p>This is some info</p>
+        <ol>
+            <li>first item</li>
+            <li>second item</li>
+        </ol>
+    </div>
+);
+```
+
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
