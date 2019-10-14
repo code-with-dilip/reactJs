@@ -13,6 +13,7 @@ var firstName = fullName.split(' ')[0]
 }
 console.log(firstName) // firstName is still accessed outside the if block. This is not available for let and const.
 ```
+
 ### Babel Command
 
 ```
@@ -21,6 +22,7 @@ babel src/playground/es6-let-const.js --out-file=public/scripts/app.js --presets
 
 ### Problems with var
 
+- Example is available in this file **es6-let-const.js** in the **FIRST-DECISION-REACT-APP**.
 - **var** allows you to recreate and reassign variables. This is a problem as mutating a variable can cause lot of issues.
 
 ```
