@@ -150,6 +150,61 @@ var template = (
 );
 ```
 
+### JSX Expressions
+
+- Expressions gives us a way to reference a variable and use it in the app.
+- We can render the variable using the following syntax - **{}**
+
+```
+const app = {
+    title: 'Indecision App',
+    subtitle: 'Indecision App Subtitle'
+}
+
+var template = (
+    <div>
+        <h1>{app.title}</h1>
+        <h2>{app.subtitle}</h2>
+        <ol>
+            <li>first item</li>
+            <li>second item</li>
+        </ol>
+    </div>
+);
+
+ReactDOM.render(template, document.getElementById('app'));
+```
+
+### Conditional Rendering in JSX
+
+- If Statements
+- Ternary Operators
+- Logical AND operators
+
+#### Example below covering all the conditional rendering
+
+```
+function getLocation(location){
+    if(location)
+        return  <p>Location is : {location}</p>
+}
+
+function renderAge(){
+    return <p>Age is : {user.age}</p>
+}
+
+var templateTwo = (
+    <div>
+        <h1> {user.name ?  user.name : 'UnKNOWN'}</h1> // ternary operator
+        {(user.age && user.age >=18) && renderAge()} // AND - &&
+        {getLocation(user.location)} // if statements
+    </div>
+);
+
+ReactDOM.render(templateTwo, document.getElementById('app'));
+```
+
+
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
