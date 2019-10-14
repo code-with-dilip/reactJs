@@ -65,6 +65,7 @@ function renderAge() {
         user.age
     );
 }
+
 var templateTwo = React.createElement(
     'div',
     null,

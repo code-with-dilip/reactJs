@@ -6,7 +6,7 @@ const app = {
    options: ['One', 'Two']
 }
 
-var template = (
+const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <h2>{app.subtitle}</h2>}
@@ -32,7 +32,8 @@ function getLocation(location){
 function renderAge(){
     return <p>Age is : {user.age}</p>
 }
-var templateTwo = (
+
+const templateTwo = (
     <div>
         <h1> {user.name ?  user.name : 'UnKNOWN'}</h1>
         {(user.age && user.age >=18) && renderAge()}

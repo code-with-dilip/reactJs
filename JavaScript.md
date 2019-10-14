@@ -2,6 +2,41 @@
 
 ## let and const
 
+-  **let** and **const** are function scoped just like **var**.
+-  **let** and **const** are block scoped, but **var** is not. Check the example below.
+
+```
+var fullName = 'Dilip Sundarraj';
+
+if(fullName){
+var firstName = fullName.split(' ')[0]
+}
+console.log(firstName) // firstName is still accessed outside the if block. This is not available for let and const.
+```
+### Babel Command
+
+```
+babel src/playground/es6-let-const.js --out-file=public/scripts/app.js --presets=env,react --watch
+```
+
+### Problems with var
+
+- **var** allows you to recreate and reassign variables. This is a problem as mutating a variable can cause lot of issues.
+
+```
+var nameVar = 'Dilip';
+console.log('nameVar', nameVar)
+var nameVar='Mike' // recreating and re-assign is allowed
+console.log('nameVar', nameVar)
+```
+### var vs let
+
+| var  | let |
+| ------------- | ------------- |
+| Redeclaring the same variable is allowed | Redeclaring the same variable is not allowed |
+| Reassigning the same variable is allowed | Reassigning the same variable is not allowed |
+
+
 | let  | const |
 | ------------- | ------------- |
 | Use it for variable values | use it for constant values |
@@ -11,7 +46,7 @@
 ```
 let myName='dilip';
 console.log(myName);
-myName='scooBy';
+myName='scooBy'; // reassigning the variable is allowed
 console.log(myName);
 ```
 **const Example**
@@ -23,6 +58,10 @@ console.log(myName);
 myName='scooBy'; // "TypeError: Assignment to constant variable.
 console.log(myName);
 ```
+
+### Block Scoping
+
+
 
 ## Arrow Functions
 
