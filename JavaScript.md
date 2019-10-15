@@ -61,13 +61,18 @@ myName='scooBy'; // "TypeError: Assignment to constant variable.
 console.log(myName);
 ```
 
-### Block Scoping
-
-
-
 ## Arrow Functions
 
 - This are the modern way of creating a function and assigning it to a variable.
+- All arrow functions are anonymous.
+
+- Babel Command to test the changes.
+
+```
+babel src/playground/es6-arrow-functions.js --out-file=public/scripts/app.js --presets=env,react --watch
+babel src/playground/es6-arrow-functions2.js --out-file=public/scripts/app.js --presets=env,react --watch\
+```
+
 
 #### Syntax
 
@@ -76,6 +81,8 @@ const myFunc = () => {
 
 }
 ```
+
+
 
 #### Example
 
@@ -113,6 +120,62 @@ const multiplySimplified = (num1,num2) =>  num1 * num2;
 console.log(multiply(2,3));
 console.log(multiplySimplified(2,3));
 ```
+
+- The arguments object is no longer bound with arrow functions. Check the example below.
+
+```
+const add = function (a,b) {
+    console.log(arguments); // regular functions have access to the argument
+    return a + b;
+}
+
+const add1 =  (a,b) =>  {
+    console.log(arguments) // no longer valid in arrow functions.
+    return a + b;
+}
+
+```
+
+- The **this** keyword is no longer bound
+
+**Regular Function Example**  
+
+```
+const user = {
+    name: 'Dilip Sundarraj',
+    cities: ['Eagan', 'AppleValley'],
+    printPlacesVisites: function(){
+        console.log(this.name);
+        console.log(this.cities)
+        this.cities.forEach(function(city){
+         //   console.log(this.name + ' lived in ' + city) // 'this' keyword is bound to this function.
+        })
+    }
+};
+```
+
+**Arrow Function Example**  
+
+```
+const userArrow = {
+    name: 'Dilip Sundarraj',
+    cities: ['Eagan', 'AppleValley'],
+    //printPlacesVisites: function(){
+    printPlacesVisites(){ // This syntax is also supported
+        console.log(this.name);
+        console.log(this.cities)
+
+        const newCities = this.cities.map((city) => this.name + ' lived in ' + city);
+        // this.cities.forEach((city) => {
+        //     console.log(this.name + ' lived in ' + city)  // 'this' keyword is not 'bound' to this function.
+        // })
+
+        return newCities;
+    }
+}
+```
+
+
 
 ## Exports and Imports
 

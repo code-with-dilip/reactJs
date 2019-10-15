@@ -1,83 +1,55 @@
 'use strict';
 
-console.log('app.js running');
-
-var app = {
-    title: 'Indecision App',
-    subtitle: 'Indecision App Subtitle',
-    options: ['One', 'Two']
+// arguments function is no longer bound.
+var add = function add(a, b) {
+    console.log(arguments);
+    return a + b;
 };
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'h2',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options && app.options.length > 0 ? 'Here are your options : ' + app.options : 'No Options'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'first item'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'second item'
-        )
-    )
-);
+var add1 = function add1(a, b) {
+    // console.log(arguments)
+    return a + b;
+};
+
+console.log(add(1, 2));
+console.log(add1(1, 2));
+
+// this keyword is no longer bound
 
 var user = {
-    name: 'Dilip',
-    age: '26',
-    location: 'Minneapolis'
+    name: 'Dilip Sundarraj',
+    cities: ['Eagan', 'AppleValley'],
+    printPlacesVisites: function printPlacesVisites() {
+        console.log(this.name);
+        console.log(this.cities);
+        this.cities.forEach(function (city) {
+            //   console.log(this.name + ' lived in ' + city) // 'this' keyword is bound to this function.
+        });
+    }
 };
 
-function getLocation(location) {
-    if (location) return React.createElement(
-        'p',
-        null,
-        'Location is : ',
-        location
-    );
-}
+//user.printPlacesVisites();
 
-function renderAge() {
-    return React.createElement(
-        'p',
-        null,
-        'Age is : ',
-        user.age
-    );
-}
 
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        ' ',
-        user.name ? user.name : 'UnKNOWN'
-    ),
-    user.age && user.age >= 18 && renderAge(),
-    getLocation(user.location)
-);
+var userArrow = {
+    name: 'Dilip Sundarraj',
+    cities: ['Eagan', 'AppleValley'],
+    //printPlacesVisites: function(){
+    printPlacesVisites: function printPlacesVisites() {
+        var _this = this;
 
-//ReactDOM.render(templateTwo, document.getElementById('app'));
-ReactDOM.render(template, document.getElementById('app'));
+        console.log(this.name);
+        console.log(this.cities);
+
+        var newCities = this.cities.map(function (city) {
+            return _this.name + ' lived in ' + city;
+        });
+        // this.cities.forEach((city) => {
+        //     console.log(this.name + ' lived in ' + city)  // 'this' keyword is not 'bound' to this function.
+        // })
+
+        return newCities;
+    }
+};
+
+console.log(userArrow.printPlacesVisites());
