@@ -1,55 +1,86 @@
 'use strict';
 
-// arguments function is no longer bound.
-var add = function add(a, b) {
-    console.log(arguments);
-    return a + b;
+console.log('app.js running');
+
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Indecision App Subtitle',
+    options: []
 };
 
-var add1 = function add1(a, b) {
-    // console.log(arguments)
-    return a + b;
-};
-
-console.log(add(1, 2));
-console.log(add1(1, 2));
-
-// this keyword is no longer bound
-
-var user = {
-    name: 'Dilip Sundarraj',
-    cities: ['Eagan', 'AppleValley'],
-    printPlacesVisites: function printPlacesVisites() {
-        console.log(this.name);
-        console.log(this.cities);
-        this.cities.forEach(function (city) {
-            //   console.log(this.name + ' lived in ' + city) // 'this' keyword is bound to this function.
-        });
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+    console.log("form submit");
+    var option = e.target.elements.option.value;
+    if (option) {
+        console.log("option", option);
+        app.options.push(option);
+        renderIndecisionApp();
+        e.target.elements.option.value = '';
     }
 };
-
-//user.printPlacesVisites();
-
-
-var userArrow = {
-    name: 'Dilip Sundarraj',
-    cities: ['Eagan', 'AppleValley'],
-    //printPlacesVisites: function(){
-    printPlacesVisites: function printPlacesVisites() {
-        var _this = this;
-
-        console.log(this.name);
-        console.log(this.cities);
-
-        var newCities = this.cities.map(function (city) {
-            return _this.name + ' lived in ' + city;
-        });
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' lived in ' + city)  // 'this' keyword is not 'bound' to this function.
-        // })
-
-        return newCities;
-    }
+var removeAllAOptions = function removeAllAOptions() {
+    app.options = [];
+    renderIndecisionApp();
 };
 
-console.log(userArrow.printPlacesVisites());
+var renderIndecisionApp = function renderIndecisionApp() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'h2',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options && app.options.length > 0 ? 'Here are your options : ' + app.options : 'No Options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: removeAllAOptions },
+            'Remove All '
+        ),
+        React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                'first item'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'second item'
+            )
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        )
+    );
+
+    var appRoot = document.getElementById('app');
+    ReactDOM.render(template, document.getElementById('app'));
+};
+
+renderIndecisionApp();

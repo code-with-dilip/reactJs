@@ -204,7 +204,81 @@ var templateTwo = (
 ReactDOM.render(templateTwo, document.getElementById('app'));
 ```
 
+### Manual Data Binding
 
+- JSX does not perform automatic data binding.
+- Below example performs manual data binding by calling the **renderCountApp()** repeatedly.
+- ReactDOM uses the concept of VirtualDOM to just reload the changed elements in the screen.
+- The below links have more information about the **VirtualDOM** and **Reconciliation** in rendering the react elements.
+  - https://reactjs.org/docs/faq-internals.html
+  - https://reactjs.org/docs/reconciliation.html
+**Example**
+
+```
+const addOne = () =>{
+    console.log('invoked addOne');
+    count++;
+    renderCountApp();
+}
+
+const minusOne = () =>{
+    console.log('invoked minusOne');
+    count--;
+    renderCountApp();
+}
+
+
+const reset = () =>{
+    count =0
+    renderCountApp();
+}
+
+const renderCountApp= () => {
+    const templateTwo = (
+        <div>
+            <h1>Count is : {count}</h1>
+            <button  onClick = {addOne}> +1 </button>
+            <button  onClick = {minusOne}> -1 </button>
+            <button  onClick = {reset}> Reset </button>
+        </div>
+    );
+    ReactDOM.render(templateTwo, document.getElementById('app'));
+}
+
+renderCountApp()
+```
+
+### Form and Inputs
+
+- All the form events falls under the category **Synthetic** events.
+
+- JSX has its own form elements. The code example below.
+  - **onSubmit** is the form handler in React to handle the **submit** and enter button **press**.
+
+```
+<form onSubmit={onFormSubmit}>
+  <input type="text"  name="option"/>
+  <button >Add Option</button>
+</form>
+```
+
+- The implementation  of **onFormSubmit*** is below.
+  - The **e** argument to the method is provided by default.
+
+```
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submit")
+    const option = e.target.elements.option.value;
+    if(option){
+        console.log("option", option)
+        app.options.push(option);
+        renderIndecisionApp();
+        e.target.elements.option.value = '';
+    }
+
+}
+```
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
