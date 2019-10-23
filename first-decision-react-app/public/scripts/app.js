@@ -5,6 +5,7 @@ console.log('app.js running');
 var app = {
     title: 'Indecision App',
     subtitle: 'Indecision App Subtitle',
+    toggle: true,
     options: []
 };
 
@@ -24,6 +25,20 @@ var removeAllAOptions = function removeAllAOptions() {
     renderIndecisionApp();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var random = Math.floor(Math.random() * app.options.length);
+    var option = app.options[random];
+    alert(option);
+    console.log(random);
+};
+
+var showOrHideSubtitle = function showOrHideSubtitle() {
+    app.toggle = !app.toggle;
+    renderIndecisionApp();
+};
+
+var numbers = [1, 2, 3];
+
 var renderIndecisionApp = function renderIndecisionApp() {
     var template = React.createElement(
         'div',
@@ -33,10 +48,15 @@ var renderIndecisionApp = function renderIndecisionApp() {
             null,
             app.title
         ),
-        app.subtitle && React.createElement(
+        app.toggle && React.createElement(
             'h2',
             null,
             app.subtitle
+        ),
+        React.createElement(
+            'button',
+            { onClick: showOrHideSubtitle },
+            'Show Sutitle'
         ),
         React.createElement(
             'p',
@@ -44,9 +64,9 @@ var renderIndecisionApp = function renderIndecisionApp() {
             app.options && app.options.length > 0 ? 'Here are your options : ' + app.options : 'No Options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What Should I Do ?'
         ),
         React.createElement(
             'button',
@@ -56,16 +76,14 @@ var renderIndecisionApp = function renderIndecisionApp() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'first item'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'second item'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    ' Options is : ',
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',

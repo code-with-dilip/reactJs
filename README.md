@@ -280,6 +280,41 @@ const onFormSubmit = (e) => {
 }
 ```
 
+### Arrays in JSX
+
+- Arrays in JSX are totally supported by JSX.
+- Below example uses the **map** method to render the individual item and map them to a JSX element.
+
+```
+<ol>
+  {
+    app.options.map((option)=><li key={option}> Options is : {option}</li> )
+  }
+</ol>
+```
+
+### Toggle
+
+- This concept is basically used to switch between the one to another using a certain event.
+
+- Example code below.
+
+```
+const showOrHideSubtitle = () => {
+    app.toggle = !app.toggle;
+    renderIndecisionApp();
+
+ }
+```
+
+- Below is the JSX code that we use to toggle between the same.
+
+```
+ {app.toggle && <h2>{app.subtitle}</h2>}
+            <button onClick={showOrHideSubtitle}>Show Sutitle</button>
+```
+
+
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
 **WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.
