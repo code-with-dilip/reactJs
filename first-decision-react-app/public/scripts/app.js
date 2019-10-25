@@ -1,104 +1,66 @@
 'use strict';
 
-console.log('app.js running');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var app = {
-    title: 'Indecision App',
-    subtitle: 'Indecision App Subtitle',
-    toggle: true,
-    options: []
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault();
-    console.log("form submit");
-    var option = e.target.elements.option.value;
-    if (option) {
-        console.log("option", option);
-        app.options.push(option);
-        renderIndecisionApp();
-        e.target.elements.option.value = '';
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+        _classCallCheck(this, Person);
+
+        console.log('test');
+        console.log('name ', name);
+        this.name = name;
+        this.age = age;
     }
-};
-var removeAllAOptions = function removeAllAOptions() {
-    app.options = [];
-    renderIndecisionApp();
-};
 
-var onMakeDecision = function onMakeDecision() {
-    var random = Math.floor(Math.random() * app.options.length);
-    var option = app.options[random];
-    alert(option);
-    console.log(random);
-};
+    _createClass(Person, [{
+        key: 'getGreeeting',
+        value: function getGreeeting() {
+            return 'Welcome ' + this.name + ' and the age is ' + this.age; //this syntax is called backtick
+        }
+    }]);
 
-var showOrHideSubtitle = function showOrHideSubtitle() {
-    app.toggle = !app.toggle;
-    renderIndecisionApp();
-};
+    return Person;
+}();
 
-var numbers = [1, 2, 3];
+var Student = function (_Person) {
+    _inherits(Student, _Person);
 
-var renderIndecisionApp = function renderIndecisionApp() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            app.title
-        ),
-        app.toggle && React.createElement(
-            'h2',
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            'button',
-            { onClick: showOrHideSubtitle },
-            'Show Sutitle'
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options && app.options.length > 0 ? 'Here are your options : ' + app.options : 'No Options'
-        ),
-        React.createElement(
-            'button',
-            { disabled: app.options.length === 0, onClick: onMakeDecision },
-            'What Should I Do ?'
-        ),
-        React.createElement(
-            'button',
-            { onClick: removeAllAOptions },
-            'Remove All '
-        ),
-        React.createElement(
-            'ol',
-            null,
-            app.options.map(function (option) {
-                return React.createElement(
-                    'li',
-                    { key: option },
-                    ' Options is : ',
-                    option
-                );
-            })
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add Option'
-            )
-        )
-    );
+    function Student() {
+        var major = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Undecided';
+        var name = arguments[1];
+        var age = arguments[2];
 
-    var appRoot = document.getElementById('app');
-    ReactDOM.render(template, document.getElementById('app'));
-};
+        _classCallCheck(this, Student);
 
-renderIndecisionApp();
+        var _this = _possibleConstructorReturn(this, (Student.__proto__ || Object.getPrototypeOf(Student)).call(this, name, age));
+
+        _this.major = major;
+        return _this;
+    }
+
+    _createClass(Student, [{
+        key: 'getGreeeting',
+        value: function getGreeeting() {
+            return 'Welcome ' + this.name + ' and the age is ' + this.age + ' and the major is ' + this.major; //this syntax is called backtick
+        }
+    }]);
+
+    return Student;
+}(Person);
+
+var me = new Person('Dilip Sundarraj', 32);
+console.log(me.getGreeeting());
+var scooby = new Person('Scooby', 2);
+console.log(scooby.getGreeeting());
+
+var aish = new Student('Science', 'Aish', '29');
+console.log(aish.getGreeeting());
