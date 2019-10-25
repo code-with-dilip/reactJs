@@ -357,6 +357,22 @@ getGreeeting() {
    }
 ```
 
+### Creating A React Component
+
+```
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Indecision</h1>
+                <h2>Put your life in the hands of the computer</h2>
+            </div>
+        );
+    }
+}
+
+```
+
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
 **WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.
