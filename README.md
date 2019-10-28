@@ -418,7 +418,35 @@ class Header extends React.Component {
 }
 ```
 
+### Events and Methods
 
+- In general its is really common to have an event and a function to handle that particular event.
+- The below example shows a form and how the submit function is tied to a **function**.
+
+```
+class AddOption extends React.Component {
+    onFormSubmit(e) {
+        e.preventDefault();
+        console.log("form submit")
+        const option = e.target.elements.option.value.trim();
+        if(option){
+            alert(option);
+        }   
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.onFormSubmit}> // This binds the onFormSubmit method to the form.
+                    <input type="text" name="option" />
+                    <button>Add New Option</button>
+                </form>
+
+            </div>
+        );
+    }
+}
+```
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
