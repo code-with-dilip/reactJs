@@ -5,9 +5,9 @@ class IndecisionApp extends React.Component {
         const options = ['one', 'two', 'three']
         return (
             <div>
-                <Header title={title} subtitle={subtitle}/>
+                <Header title={title} subtitle={subtitle} />
                 <Action />
-                <Options options={options}/>
+                <Options options={options} />
                 <AddOption />
             </div>
         );
@@ -27,21 +27,32 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+
+    handlePick() {
+        alert('handlePick');
+    }
+
     render() {
         return (
             <div>
-                <button> What Should I do ? </button>
+                <button onClick={this.handlePick}> What Should I do ? </button>
             </div>
         )
     }
 }
 
 class Options extends React.Component {
+
+    removeAll() {
+        alert('removeAll')
+    }
+
     render() {
         return (
             <div>
+                <button onClick={this.removeAll}> removeAllOption</button>
                 {
-                    this.props.options.map((option) => <Option key={option} optionText={option}/>)
+                    this.props.options.map((option) => <Option key={option} optionText={option} />)
                 }
             </div>
         );
@@ -50,7 +61,7 @@ class Options extends React.Component {
 
 class Option extends React.Component {
 
-    render(){
+    render() {
         return (
             <div>
                 Option : {this.props.optionText}
@@ -60,13 +71,26 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+    onFormSubmit(e) {
+        e.preventDefault();
+        console.log("form submit")
+        const option = e.target.elements.option.value.trim();
+        if(option){
+            alert(option);
+        }   
+    }
+    
     render() {
         return (
             <div>
-                <button>Add New Option</button>
+                <form onSubmit={this.onFormSubmit}>
+                    <input type="text" name="option" />
+                    <button>Add New Option</button>
+                </form>
+
             </div>
         );
     }
 }
 
-ReactDOM.render(<IndecisionApp/>, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
