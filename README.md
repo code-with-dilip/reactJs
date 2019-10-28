@@ -372,6 +372,53 @@ class Header extends React.Component {
 }
 
 ```
+### Nesting Components
+
+- Nesting components are pretty common in **reactjs**. Example is given below.
+
+```
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOption />
+            </div>
+        );
+
+    }
+}
+```
+
+### Component Props
+
+- **props** are equivalent to attributes in **HTML.**
+
+**Example code below:**  
+
+```
+<Header title={title} subtitle={subtitle}/>
+```
+- The props are **title** and **subtitle** in the above example.
+
+- The same can be accessed using the below code using **this.props**.
+
+```
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
+            </div>
+        );
+    }
+}
+```
+
+
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
