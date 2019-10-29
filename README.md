@@ -448,6 +448,39 @@ class AddOption extends React.Component {
 }
 ```
 
+### Method Binding
+
+- JavaScript Functions in general does not have a **this** context. You need to bind it in order to access the bind function.  
+
+```
+const getName = obj.getName.bind(obj);
+```
+
+- The **bind()** method creates a new function that, when called, has its this keyword set to the provided value.
+
+```
+const obj = {
+    name: 'Dilip',
+    getName() {
+        return this.name;
+    }
+}
+//const getName = obj.getName; // errors out stating the name is undefined because its not bind to this function.
+const getName = obj.getName.bind(obj);
+```
+
+#### React Method Binding
+
+- The better option is to do it using the constructor in the class.
+
+```
+constructor(props){
+        super(props);
+        this.removeAll = this.removeAll.bind(this); // This takes care of binding the context to this.
+    }
+```
+
+
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
 **WebPack** - This is a Bundler which takes care of bundle all the different types of files in the project in to its appropriate modules.
