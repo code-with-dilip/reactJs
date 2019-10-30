@@ -418,6 +418,16 @@ class Header extends React.Component {
 }
 ```
 
+#### Passing props to child components
+
+- You can pass the props from the Parent component to the child component. It is one directional.
+
+- In this example below the **hasOptionss** is sent as props to the Action component. There is no way for the **Action** Component to update the props to the parent component.
+
+```
+ <Action hasOptions={this.state.options.length > 0} />
+```
+
 ### Events and Methods
 
 - In general its is really common to have an event and a function to handle that particular event.
@@ -479,6 +489,72 @@ constructor(props){
         this.removeAll = this.removeAll.bind(this); // This takes care of binding the context to this.
     }
 ```
+
+### Component State
+
+- Component state allows us to manage some data in a component. Meaning any change in the state will automatically re-render the page with the changed data.
+
+```
+babel src/playground/counter-example.js --out-file=public/scripts/app.js --presets=env,react --watch
+```
+
+#### Setting up Component State
+
+```
+constructor(props){
+       super(props);
+       this.handleAddOne = this.handleAddOne.bind(this);
+       this.handleMinusOne = this.handleMinusOne.bind(this);
+       this.handleReset = this.handleReset.bind(this);
+       this.state ={   // state is introduced in the component.
+           count : 0
+       };
+   }
+```
+
+#### Changing Component state
+
+- Component state can be changed in general by using the **setState()** method.
+
+- The **setState()** method takes in an **updater function** as an argument and returns the newly changed state.
+
+- This **setState()** call is asynchronous.
+
+```
+this.setState((prevState)=>{
+           return {
+               count : prevState.count-1
+           }
+       });
+```
+
+#### Alternative setState function
+
+- The alternate syntax is to pass the object itself instead of the updater function.
+
+- This is not the recommended pattern for updating the state.
+```
+this.setState({
+            count: 0
+        })
+```
+
+- If you have multiple setState operations then it wont work as expected.
+- Because the setState operations are asynchronous by default. Watch **Alternative setState Syntax** lecture in the course to understand more about it.
+
+```
+this.setState({
+           count: 0
+       })
+
+this.setState({
+           count: this.state.count +1
+       })
+
+```
+
+-
+
 
 
 ### Build WorkFlow
