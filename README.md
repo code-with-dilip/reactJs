@@ -553,9 +553,69 @@ this.setState({
 
 ```
 
--
+#### Passing function references as Props
+
+- It is pretty common to send function references from the parent component to the child component.
+
+- This gives the flexibility of the child component to the parent component.
+
+```
+
+//1 - create a function
+handlePick() {
+        const random = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[random];
+        alert(option);
+    }
+
+//2 - bind the function
+this.handlePick = this.handlePick.bind(this);
 
 
+//3- pass the function
+<Action hasOptions={this.state.options.length > 0}
+                   handlePick={this.handlePick} />
+
+//4 - use the function in the child component.
+class Action extends React.Component {
+
+    handlePick() {
+        alert('handlePick');
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.props.handlePick}
+                    disabled={!this.props.hasOptions}> What Should I do ? </button>
+            </div>
+        )
+    }
+}
+
+```
+
+#### Having a State in a child component
+
+- It is recommended to have state in child components wherever it makes sense.
+
+**Example Scenario**  
+
+- Lets say you have a **form** as a child component. In that case, it makes sense to have the validations related to the form in that component itself.
+
+- Check the AddOption component in the example.
+
+#### State vs Props
+
+Check the following [link](https://www.udemy.com/course/react-2nd-edition/learn/lecture/7707704#overview)
+
+| State  | Props |
+| ------------- | ------------- |
+| Its an Object  | Its an Object |
+| Can be used when rendering  | Can be used when rendering |
+| Change in state, re-renders the page  | Change in props, re-renders the page |
+| Defined in Component itself  | Data Flow in One direction, From above (Parent to Child compnents) |
+| Can be changed by Component  | Cannot be changed by Component |
 
 ### Build WorkFlow
 **Dependency Management** - Use npm or yarn for dependency management.
